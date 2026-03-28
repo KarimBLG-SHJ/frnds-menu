@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRNDS — Menu</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#1B2A4A;--gold:#D4A843;--cream:#FAF7F2;--white:#fff;
+  --grey:#7a7167;--light:#F3F0EB;--warm:#E8E2D9;
+}
+html{-webkit-font-smoothing:antialiased}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--navy);min-height:100vh}
+.page{max-width:1000px;margin:0 auto;padding:1.2rem 1.5rem 1.5rem}
+.header{text-align:center;padding:1.5rem 0 0.8rem;border-bottom:2px solid var(--navy)}
+.header h1{font-family:'Playfair Display',serif;font-size:2.8rem;letter-spacing:0.1em;color:var(--navy);line-height:1}
+.header .tag{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-top:0.3rem}
+.header .loc{font-size:0.65rem;color:var(--grey);margin-top:0.15rem;letter-spacing:0.05em}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:0.6rem}
+.grid>.zone{padding:0.7rem 0.9rem;border-bottom:1px solid var(--warm)}
+.grid>.zone:nth-child(odd){border-right:1px solid var(--warm)}
+.zone-title{font-family:'Playfair Display',serif;font-size:1rem;color:var(--navy);margin-bottom:0.1rem;display:flex;align-items:baseline;gap:0.4rem}
+.zone-title::after{content:'';flex:1;height:1px;background:var(--warm)}
+.zone-sub{font-size:0.55rem;color:var(--grey);letter-spacing:0.03em;margin-bottom:0.4rem;font-style:italic}
+.i{padding:0.2rem 0;line-height:1.35}
+.i-name{font-weight:700;font-size:0.75rem;color:var(--navy)}
+.i-desc{font-size:0.6rem;color:var(--grey)}
+.t{font-size:0.45rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;padding:0.1rem 0.3rem;border-radius:6px;margin-left:0.3rem;position:relative;top:-1px;display:inline-block}
+.t-s{background:#FEE2E2;color:#C0392B}
+.t-m{background:#E8F5E9;color:#2E7D32}
+.t-g{background:#FFF3E0;color:#E65100}
+.t-b{background:linear-gradient(135deg,#FFF8E1,#FFE082);color:#F57F17}
+.fnote{font-size:0.55rem;color:var(--grey);margin-top:0.25rem;padding:0.2rem 0.4rem;background:var(--light);border-radius:4px;font-style:italic}
+.fnote b{color:var(--navy);font-style:normal}
+.zone-full{grid-column:1/-1;border-right:none!important}
+.combo{grid-column:1/-1;background:var(--navy);color:var(--white);padding:0.7rem 1.2rem;text-align:center;border-bottom:none;position:relative;overflow:hidden}
+.combo::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0L40 20L20 40L0 20z' fill='none' stroke='%23D4A843' stroke-width='0.3' opacity='0.12'/%3E%3C/svg%3E") repeat}
+.combo>*{position:relative;z-index:1}
+.combo-badge{display:inline-block;background:var(--gold);color:var(--navy);font-size:0.5rem;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;padding:0.15rem 0.7rem;border-radius:12px;margin-bottom:0.25rem}
+.combo h3{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--white)}
+.combo .price{font-size:1.6rem;font-weight:900;color:var(--gold);line-height:1.2}
+.combo .price span{font-size:0.65rem;font-weight:400;color:rgba(255,255,255,0.5)}
+.combo .detail{font-size:0.6rem;color:rgba(255,255,255,0.6);margin-top:0.15rem;line-height:1.4}
+.combo .detail b{color:var(--white);font-weight:600}
+.combos-grid{display:flex;justify-content:center;gap:1rem;margin-top:0.5rem;flex-wrap:wrap}
+.combo-card{background:rgba(255,255,255,0.08);border:1px solid rgba(212,168,67,0.3);border-radius:8px;padding:0.5rem 0.8rem;flex:1;min-width:140px;max-width:220px}
+.combo-name{font-family:'Playfair Display',serif;font-size:1rem;color:var(--gold);margin-bottom:0.2rem}
+.combo-content{font-size:0.58rem;color:rgba(255,255,255,0.7);line-height:1.5}
+.footer{text-align:center;padding:0.5rem 0 0.3rem;border-top:2px solid var(--navy);margin-top:0.3rem;display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap}
+.footer span{font-size:0.55rem;color:var(--grey);letter-spacing:0.03em}
+.footer b{color:var(--navy)}
+@media(max-width:700px){
+  .page{padding:0.8rem}
+  .header h1{font-size:2rem}
+  .grid{grid-template-columns:1fr}
+  .grid>.zone:nth-child(odd){border-right:none}
+  .zone{padding:0.6rem 0.5rem}
+  .zone-title{font-size:0.9rem}
+  .i-name{font-size:0.72rem}
+  .combos-grid{gap:0.5rem}
+  .combo-card{min-width:100%;max-width:100%}
+}
+@media print{
+  body{background:#fff}
+  .page{padding:0.5cm;max-width:none}
+  .grid>.zone{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <h1>FRNDS</h1>
+    <div class="loc">La Part-Dieu — Lyon</div>
+  </div>
+  <div class="grid">
+    <div class="zone">
+      <div class="zone-title">Smash Burgers</div>
+      <div class="zone-sub">Potato bun brioche — M (1 steak) · X (2 steaks) · XL (3 steaks)</div>
+      <div class="i"><span class="i-name">Classique Double Cheese</span><span class="t t-b">Best</span><div class="i-desc">Cheddar, cornichons, sauce burger maison</div></div>
+      <div class="i"><span class="i-name">Bacon</span><div class="i-desc">Cheddar, bacon fume, sauce burger maison</div></div>
+      <div class="i"><span class="i-name">Sweet Mustard</span><div class="i-desc">Cheddar, oignons caramelises, moutarde miel</div></div>
+      <div class="i"><span class="i-name">Jalapenos</span><span class="t t-s">Piquant</span><div class="i-desc">Cheddar, pickles jalapenos, sauce BBQ, sesame</div></div>
+      <div class="i"><span class="i-name">Signature</span><span class="t t-g">Signature</span><div class="i-desc">Emmental, champignons, ciboulette, sauce truffe nori</div></div>
+      <div class="i"><span class="i-name">Ninja Kick</span><span class="t t-s">Piquant</span><div class="i-desc">Emmental, onion rings, sauce miso sriracha</div></div>
+      <div class="i"><span class="i-name">Spicy Tartare Chicken</span><div class="i-desc">Poulet croustillant, creme cheddar, romaine</div></div>
+    </div>
+    <div class="zone">
+      <div class="zone-title">Brasserie</div>
+      <div class="zone-sub">Plats genereux, faits maison</div>
+      <div class="i"><span class="i-name">Poulet Basse Temperature</span><span class="t t-g">Signature</span><div class="i-desc">Poulet BT, creme parmesan, mesclun, puree</div></div>
+      <div class="i"><span class="i-name">Effiloche Parmentier</span><span class="t t-m">Maison</span><div class="i-desc">Hachis parmentier a l'effiloche de boeuf</div></div>
+      <div class="i"><span class="i-name">Escalope Milanaise</span><div class="i-desc">Escalope panee, penne creme champignons</div></div>
+      <div class="i"><span class="i-name">Mac & Cheese</span><span class="t t-b">Best</span><div class="i-desc">Mac & cheese, bacon fume</div></div>
+      <div class="i"><span class="i-name">Rigatoni Tomate Basilic</span><div class="i-desc">Rigatoni, sauce tomate basilic, parmesan</div></div>
+    </div>
+    <div class="zone">
+      <div class="zone-title">Sandos</div>
+      <div class="zone-sub">Pain de mie brioche japonais</div>
+      <div class="i"><span class="i-name">Shrimp Sando</span><div class="i-desc">Crevettes, avocat, citron vert, mayo thai</div></div>
+      <div class="i"><span class="i-name">Beef Sando</span><span class="t t-g">Signature</span><div class="i-desc">Effiloche boeuf, mayo truffee, cheddar epice</div></div>
+      <div class="i"><span class="i-name">Poulet Katsu Sando</span><div class="i-desc">Poulet pane japonais, coleslaw, gribiche</div></div>
+    </div>
+    <div class="zone">
+      <div class="zone-title">Dynamites</div>
+      <div class="zone-sub">Sauce dynamite maison — mayo, sriracha, ail</div>
+      <div class="i"><span class="i-name">Ailerons Dynamite</span><div class="i-desc">Ailerons de poulet, cebette, sesame</div></div>
+      <div class="i"><span class="i-name">Tenders Dynamite</span><div class="i-desc">Tenders poulet tempura, cacahuetes</div></div>
+      <div class="i"><span class="i-name">Crevettes Dynamite</span><div class="i-desc">Crevettes, ciboulette, cajou</div></div>
+    </div>
+    <div class="zone">
+      <div class="zone-title">Frites Garnies</div>
+      <div class="zone-sub">&nbsp;</div>
+      <div class="i"><span class="i-name">Frites Bolognaise</span><span class="t t-b">Best</span><div class="i-desc">Bolo boeuf maison, mornay, parmesan</div></div>
+      <div class="i"><span class="i-name">Frites Effiloche Boeuf</span><div class="i-desc">Effiloche, cheddar fondu, parmesan</div></div>
+      <div class="i"><span class="i-name">Frites Poulet & Champignons</span><div class="i-desc">Creme champignons frais, parmesan</div></div>
+      <div class="fnote"><b>Options :</b> Paprika ou Piment — sans supplement</div>
+    </div>
+    <div class="zone">
+      <div class="zone-title">Salades</div>
+      <div class="zone-sub">&nbsp;</div>
+      <div class="i"><span class="i-name">Mesclun Burrata</span><span class="t t-m">Maison</span><div class="i-desc">Pesto maison, vinaigrette huile d'olive, citron</div></div>
+      <div class="i"><span class="i-name">Cesar</span><div class="i-desc">Poulet BT, croutons brioche, sauce cesar maison</div></div>
+    </div>
+    <div class="zone">
+      <div class="zone-title">Desserts</div>
+      <div class="zone-sub">&nbsp;</div>
+      <div class="i"><span class="i-name">Creme Caramel Vanille</span><div class="i-desc">Vanille Madagascar</div></div>
+      <div class="i"><span class="i-name">Cheesecake Basque</span><span class="t t-b">Best</span><div class="i-desc">Sauce chocolat 55%</div></div>
+      <div class="i"><span class="i-name">Cookie Kunafa Pistache</span><span class="t t-g">Signature</span><div class="i-desc">Cookie kunafa, pistache</div></div>
+      <div class="i"><span class="i-name">Glace a l'Italienne</span><div class="i-desc">Parfum de saison</div></div>
+    </div>
+    <div class="zone">
+      <div class="zone-title">Milkshakes</div>
+      <div class="zone-sub">Glace italienne, lait frais</div>
+      <div class="i"><span class="i-name">Cacahuete Banane Caramel Sale</span><span class="t t-b">Best</span></div>
+      <div class="i"><span class="i-name">Kunafa Pistache</span><span class="t t-g">Signature</span></div>
+      <div class="i"><span class="i-name">Fraise Citron Vert</span></div>
+      <div class="i"><span class="i-name">Chocolat au Lait</span></div>
+    </div>
+    <div class="zone zone-full" style="text-align:center;padding-top:0.4rem;padding-bottom:0.4rem;border-bottom:none">
+      <span class="i-name" style="font-size:0.7rem">Menu Enfant</span> <span style="font-size:0.55rem;color:var(--grey);font-style:italic">— moins de 8 ans — Burger ketchup OU Nuggets + Frites + Boisson</span>
+    </div>
+    <div class="combo">
+      <div class="combo-badge">Nos Combos</div>
+      <h3>Les Combos FRNDS</h3>
+      <div class="combos-grid">
+        <div class="combo-card">
+          <div class="combo-name">Solo</div>
+          <div class="combo-content">1 Smash Burger + 1 Frites garnies + 1 Boisson</div>
+        </div>
+        <div class="combo-card">
+          <div class="combo-name">Duo</div>
+          <div class="combo-content">2 Smash Burgers + 1 Frites garnies + 2 Dynamites + 2 Boissons</div>
+        </div>
+        <div class="combo-card">
+          <div class="combo-name">Squad</div>
+          <div class="combo-content">4 Smash Burgers + 2 Frites garnies + 1 Dynamites + 4 Boissons + 2 Desserts</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <span><b>100% Halal</b> certifie</span>
+    <span>Fait maison — produits frais</span>
+    <span>Mars 2026</span>
+  </div>
+</div>
+</body>
+</html>
